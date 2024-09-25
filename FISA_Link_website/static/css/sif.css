@@ -1,0 +1,77 @@
+#SIF-container{
+    width: 30%;
+    min-width: 250px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+
+/* CSS pour la modale personnalisée */
+.modal {
+    display: none; /* Masquer la modale par défaut */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button {
+    margin-top: 10px;
+}
+
+.qr-code-container {
+    text-align: center;    /* Centrer le contenu dans le conteneur */
+    margin-top: 20px;      /* Ajouter un espace au-dessus si nécessaire */
+}
+
+.qr-code-item {
+    display: inline-block; /* Permettre aux QR codes de s'afficher côte à côte */
+    margin: 10px;          /* Ajouter de l'espace entre chaque QR code */
+}
+
+.qr-code-image {
+    min-width: 150px;
+    width: 12rem;          /* Ajuster la taille des images QR codes */
+    height: auto;          /* Garder les proportions */
+}
+
+.qr-code-link {
+    display: flex;         /* Utiliser flexbox pour contrôler l'agencement interne */
+    flex-direction: column;/* Placer l'image au-dessus du texte */
+    align-items: center;   /* Centrer l'image et le texte */
+    margin-top: 5px;       /* Un petit espace entre l'image et le lien */
+    text-decoration: none; /* Supprimer le soulignement des liens */
+    color: #000;           /* Couleur du lien */
+}
+
+.qr-code-text {
+    margin-top: 5px;       /* Espace entre l'image et le texte */
+    font-size: 14px;       /* Taille du texte */
+    color: #000;           /* Couleur du texte */
+}

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FISA Link - Inscription SIF</title>
+    {% load static %}
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main_dashboard.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/link.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/sif.css' %}">
+    <!--===============================================================================================-->
+    <script>
+        const STATIC_URL = "{% static 'images/' %}";
+    </script>
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="limiter">
+        {% csrf_token %}
+        <div class="container-login100">
+            <div class="wrap-login100">
+                
+                <form class="login100-form validate-form">
+                    <span class="login100-form-title p-b-26">
+                        Bonjour <span id="prenom"></span>
+                    </span>
+                    <img src="{% static 'images/SIF_2024_small.png' %}" alt="Logo FISA" class="sif-logo">
+                    <span class="login100-form-title p-b-26"></span>
+                    <!-- Case à cocher -->
+                    <div class="form-group">
+                        <input type="checkbox" id="sif-checkbox">
+                        <label for="sif-checkbox">
+                            Je participe au SIF (Semaine d'Intégration FISA) du 18 au 20 octobre 2024
+                        </label>
+                    </div>
+                    <div id="SIF-reservation-container">
+                        <!-- Liste déroulante des pizzas -->
+                        <div id="sif-inscription-container" class="form-group" style="display: none;">
+                            <!-- Liste déroulante des bungalows -->
+                            <div id="bungalow-container" class="form-group">
+                                <label for="bungalow-select">Choisissez un bungalow (max. 7 places):</label>
+                                <select id="bungalow-select" class="form-control">
+                                    <option value="">Sélectionnez...</option>
+                                    <option value="1">Bungalow 1 </option>
+                                    <option value="2">Bungalow 2 </option>
+                                    <option value="3">Bungalow 3 </option>
+                                    <option value="4">Bungalow 4 </option>
+                                    <option value="5">Bungalow 5 </option>
+                                    <option value="6">Bungalow 6 </option>
+                                    <option value="7">Bungalow 7 [Réservé 3A] </option>
+                                </select>
+                            </div>
+                            <label for="pizza-select">Choisissez une pizza:</label>
+                            <select id="pizza-select" class="form-control">
+                                <option value="">Sélectionnez...</option>
+
+                                <!-- Les Traditionnelles -->
+                                <optgroup label="Les Traditionnelles">
+                                    <option value="reine">Reine - Base tomate, mozzarella, jambon supérieur, champignons frais</option>
+                                    <option value="bolognaise">Bolognaise - Base tomate, mozzarella, viande hachée, champignons frais</option>
+                                    <option value="4-fromages">4 Fromages - Base tomate, mozzarella, chèvre, raclette, bleu</option>
+                                    <option value="veggie">Veggie - Base tomate, mozzarella, poivrons, champignons frais, artichauts marinés, roquette</option>
+                                    <option value="bolognaise-sans-fromage">Bolognaise sans fromage - Base tomate, viande hachée, champignons frais</option>
+                                </optgroup>
+
+                                <!-- Les Crémeuses -->
+                                <optgroup label="Les Crémeuses">
+                                    <option value="savoyarde">Savoyarde - Base crème, mozzarella, lardons, oignons rouges, raclette, pommes de terre</option>
+                                </optgroup>
+                                <optgroup label=" --------- ">
+                                    <option value="pas-de-pizza">Pas de pizza</option>
+                                </optgroup>
+                            </select>
+                            <p>Le prix du week-end SIF est de <strong>80€</strong>. Le paiement s'effectue sur PayPal, Lydia ou PayLib selon votre choix.  </p>
+                            <p>Préciser, si possible, votre nom et prénom lors du paiement.</p>
+                            <p>Merci de ne pas payer en CB avec Lydia (uniquement avec un compte Lydia ou Virement bancaire) car cela entraine des frais supplémentaires. </p>
+                            <div class="qr-code-container">
+                                <!-- Insertion des QR codes de paiement -->                                
+                            </div>
+                    </div>
+                    <span class="login100-form-title p-b-26"></span>
+                    <div id="sif-container" class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button id="sif-button" class="login100-form-btn">
+                                Retour à FISA Link
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button id="logout-button" class="login100-form-btn">
+                                Se déconnecter
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modale Bootstrap Inscription-->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document"> <!-- Agrandir la modale -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmationModalLabel">Avertissement</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Cette validation compte comme un gage de votre participation. Le Bureau des Élèves (BDE) FISA prendra en compte votre venue si vous confirmez votre inscription, vérifiez donc bien vos disponibilités avant confirmation !
+                    <br><br> 
+                    Si vous confirmez, vous serez inscrit au SIF et recevrez une notification par email.
+                    <br><br>
+                    L'équipe du BDE FISA
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                    <button type="button" id="confirm-button" class="btn btn-primary">Je confirme</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- Modale Bootstrap Désinscription-->
+    <div class="modal fade" id="confirmUnsubscribeModal" tabindex="-1" role="dialog" aria-labelledby="confirmUnsubscribeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmUnsubscribeModalLabel">Confirmation de Désinscription</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Êtes-vous sûr de vouloir vous désinscrire de l'événement SIF ? 
+                    <br><br>
+                    Si vous confirmez, vous serez désinscrit du SIF et recevrez une notification par email.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                    <button type="button" id="confirm-unsubscribe-button" class="btn btn-danger">Se désinscrire</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--===============================================================================================-->
+    <!-- jQuery, Popper.js, Bootstrap JS CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+    <script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
+    <script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
+    <script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
+    <script src="{% static 'js/logout.js' %}"></script>
+    <script src="{% static 'js/sif_button.js' %}"></script>
+    <script src="{% static 'js/sif.js' %}"></script>
+    <!--===============================================================================================-->
+</body>
+</html>
