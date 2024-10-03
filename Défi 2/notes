@@ -1,4 +1,4 @@
-kubectl config set-context --current --namespace=u-9q687
+kubectl config set-context --current --namespace=u-u-zgknd
 kubectl apply -f k8s/deployment.yaml
 kubectl apply -f k8s/service.yaml
 
