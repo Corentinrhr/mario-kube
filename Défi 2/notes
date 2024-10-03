@@ -1,0 +1,14 @@
+kubectl config set-context --current --namespace=u-9q687
+kubectl apply -f k8s/deployment.yaml
+kubectl apply -f k8s/service.yaml
+
+
+Questions
+
+    Quel est le but d'un service ?
+        Le service permet de distribuer les charges de traitement de manière uniforme sur les pods qu'il a de disponible.
+        De plus, il agit comme DNS sur les adresses IP dynamiques des pods il permet de les exposer que ce soit en interne, communication interpods, ou en externe, commmunication avec l'utilisateur.
+
+    Quelle est la différence entre les service ClusterIP et NodePort ?
+        ClusterIP permet de gérer l'exposition des adresses IP des ports à l'intérieur du cluster (deployment).
+        NodePort expose les ports à l'extérieur du cluster pour permettre les utilisateurs d'accéder aux services.

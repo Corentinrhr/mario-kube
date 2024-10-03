@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: csc8567-deployment
+spec:
+  replicas: 3  # On demande 3 répliques
+  selector:
+    matchLabels:
+      app: csc8567
+  template:
+    metadata:
+      labels:
+        app: csc8567
+    spec:
+      containers:
+      - name: csc8567-container
+        image: xhelozs/csc8567:v1
+        resources:
+          requests:
+            cpu: "100m"  # 1/10 de CPU par Pod
+            memory: "100Mi"  # 100 Mo de mémoire RAM par Pod
+          limits:
+            cpu: "200m"  # Limitation à 1/5 de CPU
+            memory: "200Mi"  # Limitation à 200 Mo de RAM
