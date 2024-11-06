@@ -1,2 +1,3 @@
 # Kube Projet TSP groupe "mario"
-Basé sur le projet FISA Link : https://github.com/Corentinrhr/FISA_Link
+Defi Kube : https://github.com/DF-Telecom-SudParis/CSC8567-Final
+Suivi des défis : https://docs.google.com/spreadsheets/d/1Zj6InKllWzZTZjQkJU8YbWLw-fLkAadyMZUVTFfVCdI/edit?gid=0#gid=0
